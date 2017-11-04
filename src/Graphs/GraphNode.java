@@ -7,8 +7,11 @@ import java.util.List;
  * Created by Goki_PC on 10/31/2017.
  */
 public class GraphNode {
-    public int id;
-    public LinkedList<GraphNode> adjacentNodes;
+    private int id;
+    private LinkedList<GraphNode> adjacentNodes;
+    private NodeState state;
+
+
 
     public GraphNode(int id) {
         this.id = id;
@@ -19,7 +22,7 @@ public class GraphNode {
         return this.id;
     }
 
-    public List<GraphNode> grAdjacentNodeList() {
+    public List<GraphNode> getAdjacentNodeList() {
         return this.adjacentNodes;
     }
 
@@ -33,5 +36,17 @@ public class GraphNode {
             }
         }
         return adjacentNodeListStr.toString();
+    }
+
+    public void addAdjacentNode(GraphNode node) {
+        this.adjacentNodes.addFirst(node);
+    }
+
+    public NodeState getState() {
+        return this.state;
+    }
+
+    public void setState(NodeState s) {
+        this.state = s;
     }
 }

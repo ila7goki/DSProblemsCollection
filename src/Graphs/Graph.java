@@ -22,7 +22,7 @@ public class Graph {
         g.addEdge(4, 3);
 
         for (GraphNode gn : g.lookupMap.values()) {
-            System.out.println(gn.id + " -> " + gn.getAdjacentNodesStr());
+            System.out.println(gn.getId() + " -> " + gn.getAdjacentNodesStr());
         }
 
         System.out.println("Depth First Traversal: ");
@@ -64,7 +64,7 @@ public class Graph {
             d = this.lookupMap.get(dest);
         }
 
-        s.adjacentNodes.addFirst(d);
+        s.addAdjacentNode(d);
     }
 
     /*** Traversal of Graph using Depth first approach. i.e. we look at deep into a child node before looking at other
@@ -85,7 +85,7 @@ public class Graph {
         System.out.println(graphNode.getId());
 
         //if(visited.contains(graphNode.getId())) return false;
-        for (GraphNode aN : graphNode.grAdjacentNodeList()) {
+        for (GraphNode aN : graphNode.getAdjacentNodeList()) {
             if (!visited.contains(aN.getId())) {
                 DFSUtil(aN, visited);
             }
@@ -112,7 +112,7 @@ public class Graph {
                     visited.add(currNode.getId());
                     System.out.println(currNode.getId());
 
-                    for (GraphNode gn : currNode.grAdjacentNodeList()) {
+                    for (GraphNode gn : currNode.getAdjacentNodeList()) {
                         nextToVisit.add(gn);
                     }
                 }
