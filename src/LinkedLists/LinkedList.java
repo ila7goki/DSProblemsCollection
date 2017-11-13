@@ -108,4 +108,38 @@ public class LinkedList implements Iterable<Integer>
             current = current.getNext();
         }
     }
+
+    public int getKthToLastRecursive(Node head, int k)
+    {
+        if(head == null) return 0;
+
+        int idx = getKthToLastRecursive(head.next, k) + 1;
+
+
+        if(idx-1 == k)
+            System.out.println(head.getData());
+
+        return idx;
+    }
+
+    public int getKthToLastIterative(int k)
+    {
+        Node kthNode = head;
+        Node nthNode = head;
+
+        for(int i=0; i < k; i++)
+        {
+            if(i<=k-1 && nthNode.getNext() == null) return 0;
+
+            nthNode = nthNode.getNext();
+        }
+
+        while(nthNode.getNext() != null)
+        {
+            kthNode = kthNode.getNext();
+            nthNode = nthNode.getNext();
+        }
+
+        return kthNode.getData();
+    }
 }

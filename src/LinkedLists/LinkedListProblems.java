@@ -40,5 +40,7 @@ public class LinkedListProblems {
         printList();
         removeDuplicates();
         printList();
+        list.getKthToLastRecursive(list.head, 0);
+        System.out.println("--" + list.getKthToLastIterative(0));
     }
 }
