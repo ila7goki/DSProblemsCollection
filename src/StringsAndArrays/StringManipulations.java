@@ -1,6 +1,7 @@
 package StringsAndArrays;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 /**
  * Created by Goki_PC on 10/23/2017.
@@ -147,6 +148,77 @@ public class StringManipulations {
         //return true;
     }
 
+    public static boolean StringContains(String str1, String str2)
+    {
+        int lenS1 = str1.length();
+        int lens2 = str2.length();
+
+        int j=0;
+
+        for(int i=0; i<lenS1&j<lens2; i++)
+        {
+            if(str1.charAt(i) == str2.charAt(j))
+                j++;
+            else
+                j=0;
+        }
+
+        return (j == lens2);
+    }
+
+    public static int lengthOfLongestSubstring(String input)
+    {
+        int l1 = input.length();
+        int outLen = 0;
+
+        HashMap<Character, Integer> map = new HashMap<>();
+
+        for(int i=0, j=0; i<l1; i++)
+        {
+            char currentChar = input.charAt(i);
+
+            //if(currentChar == ' ') continue;
+
+            if(currentChar != ' ' && map.containsKey(currentChar))
+            {
+                 j= Math.max(map.get(currentChar), j);
+            }
+
+            outLen = Math.max(outLen, i-j+1);
+            map.put(currentChar, i+1);
+        }
+
+        return outLen;
+    }
+
+    public static void permuteAndPrint(String input)
+    {
+        boolean[] used = new boolean[input.length()];
+        StringBuilder out = new StringBuilder();
+
+        permute(used, out, input);
+    }
+
+    public static void permute(boolean[] used, StringBuilder out, String input)
+    {
+        int inlen = input.length();
+        if(out.length() == inlen)
+        {
+            System.out.print(out.toString() + "  ");
+            return;
+        }
+
+        for(int i=0; i<inlen; i++)
+        {
+            if(used[i]) continue;
+            out.append(input.charAt(i));
+            used[i] = true;
+            permute(used, out, input);
+            used[i] = false;
+            out.setLength(out.length()-1);
+        }
+    }
+
     public static void main(String[] args) {
         if (isUniqueChar("ABCD EFGH IJKL")) {
             System.out.println("String contains unique characters");
@@ -170,6 +242,15 @@ public class StringManipulations {
         {
             System.out.println("No. It is not a Permutation of a Palindrome");
         }
+
+        if(StringContains("God is Great!", "Git"))
+        {
+            System.out.println("String contains: True");
+        }
+
+        System.out.println( lengthOfLongestSubstring("ab aaba"));
+
+        permuteAndPrint("abcd");
     }
 
 }
