@@ -1,8 +1,6 @@
 package OldProblemSolutions;
 
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.util.HashSet;
-import java.util.Scanner;
 
 /**
  * Created by Goki_PC on 4/21/2017.
@@ -42,7 +40,6 @@ public class LeetCode
 
         char[] strChr = s.toCharArray();
         int len = strChr.length;
-        s.length();
         int startWord = 0;
         for(int endWord = 0; endWord < len; endWord++)
         {
@@ -65,11 +62,11 @@ public class LeetCode
         return 1;
     }
 
-    public static int longestConsecutive(int[] numArr)
+    private static int longestConsecutive(int[] numArr)
     {
         int maxCnt = 0;
 
-        HashSet<Integer> numset = new HashSet<Integer>();
+        HashSet<Integer> numset = new HashSet<>();
         for (int i : numArr)
         {
             numset.add(i);
@@ -133,6 +130,12 @@ public class LeetCode
 
         int n[] = {100, 4, 200, 1, 3, 2, 6, 7, 8, 9, 10};
         System.out.println(longestConsecutive(n));
+        long nInts = ((long) Integer.MAX_VALUE) + 1;
+        byte[] bitfield = new byte[(int) (nInts / 8)];
+        byte b = 12;
+
+        System.out.println(Integer.toBinaryString(1 << 5) + ", " + (14 | 1));
+        System.out.println(Integer.MAX_VALUE + ", " + nInts + ", " + (int) (nInts / 8) + ", " + 10 / 8 + ", " + (bitfield[10 / 8] | 1));
     }
 
 }

@@ -8,6 +8,22 @@ import java.util.Queue;
  */
 public class GraphSearchProblems {
 
+    public static void main(String[] args) {
+        Graph g = new Graph();
+        g.addEdge(0, 1);
+        g.addEdge(0, 2);
+        g.addEdge(1, 0);
+        g.addEdge(2, 0);
+        g.addEdge(2, 4);
+        g.addEdge(4, 4);
+
+        GraphSearchProblems p1 = new GraphSearchProblems();
+
+        System.out.println("Path between 1 -> 4 : " + p1.isPathExists(1, 4, g));
+        System.out.println("Path between 4 -> 1 : " + p1.isPathExists(3, 1, g));
+
+    }
+
     public boolean isPathExists(int start, int end, Graph graph) {
         GraphNode startNode = graph.getNode(start);
         GraphNode endNode = graph.getNode(end);
@@ -39,21 +55,5 @@ public class GraphSearchProblems {
         }
 
         return false;
-    }
-
-    public static void main(String[] args) {
-        Graph g = new Graph();
-        g.addEdge(0, 1);
-        g.addEdge(0, 2);
-        g.addEdge(1, 0);
-        g.addEdge(2, 0);
-        g.addEdge(2, 4);
-        g.addEdge(4, 4);
-
-        GraphSearchProblems p1 = new GraphSearchProblems();
-
-        System.out.println("Path between 1 -> 4 : " + p1.isPathExists(1, 4, g));
-        System.out.println("Path between 4 -> 1 : " + p1.isPathExists(3, 1, g));
-
     }
 }

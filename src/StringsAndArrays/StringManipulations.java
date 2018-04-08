@@ -27,6 +27,19 @@ public class StringManipulations {
         return true;
     }
 
+
+//    public static char firstNonRepeatedChar(String str)
+//    {
+//        boolean[] charset = new boolean[256];
+//
+//        for(int i=0; i < str.length(); i++)
+//        {
+//            int val = str.charAt(i);
+//            if(charset[val])
+//            charset[str.charAt(i)]
+//        }
+//    }
+
     // Using Efficient method.. uses counting of characters in the string and then
     // de-counting so that if permuation results in 0 as a count for each char in input length.
     public static boolean isPermutationStr1(String input1, String input2)
@@ -39,6 +52,7 @@ public class StringManipulations {
 
         int inputLen = input1.length();
         int[] charSet = new int[256];
+
         for (int i=0; i<inputLen; i++)
         {
             charSet[input1.charAt(i)]++;
@@ -46,7 +60,7 @@ public class StringManipulations {
 
         for(int i=0; i<inputLen; i++)
         {
-            if(charSet[input2.charAt(i)] < 0) return false;
+            if (charSet[input2.charAt(i)] <= 0) return false;
             charSet[input2.charAt(i)]--;
         }
 
@@ -56,7 +70,7 @@ public class StringManipulations {
     //Helper method to sort the input string characters and return as string
     private static String sort(String input)
     {
-        char[] inArr = new char[input.length()];
+        char[] inArr = input.toCharArray();
         Arrays.sort(inArr);
 
         return new String(inArr);
@@ -67,9 +81,8 @@ public class StringManipulations {
     {
         if(input1.length() != input2.length()) return false;
 
-        if(sort(input1).equals(sort(input2))) return true;
+        return sort(input1).equals(sort(input2));
 
-        return false;
     }
 
     //Method to replace all spaces in a string with "%20"
@@ -155,9 +168,8 @@ public class StringManipulations {
 
         int j=0;
 
-        for(int i=0; i<lenS1&j<lens2; i++)
-        {
-            if(str1.charAt(i) == str2.charAt(j))
+        for (int i = 0; i < lenS1 && j < lens2; i++) {
+            if (str1.charAt(i) == str2.charAt(j))
                 j++;
             else
                 j=0;
@@ -226,7 +238,7 @@ public class StringManipulations {
             System.out.println("String doesn not contain unique characters");
         }
 
-        if (isPermutationStr2("Gokila", "kilaGo")) {
+        if (isPermutationStr1("Gokila", "kilao")) {
             System.out.println("Strings are permutations of each other");
         } else {
             System.out.println("Strings are not permutations of each other");
@@ -251,6 +263,8 @@ public class StringManipulations {
         System.out.println( lengthOfLongestSubstring("ab aaba"));
 
         permuteAndPrint("abcd");
+
+        System.out.println(sort("welcome"));
     }
 
 }

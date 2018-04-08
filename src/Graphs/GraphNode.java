@@ -11,8 +11,6 @@ public class GraphNode {
     private LinkedList<GraphNode> adjacentNodes;
     private NodeState state;
 
-
-
     public GraphNode(int id) {
         this.id = id;
         adjacentNodes = new LinkedList<>();
